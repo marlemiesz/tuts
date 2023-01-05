@@ -23,6 +23,15 @@ vi /etc/lighttpd/lighttpd.conf
 Uncomment line:
 `include "mod_fastcgi.conf"`
 
+**Optional, If you require an SSL connection, you will need to add the following text**
+```text
+$SERVER["socket"] == ":443" {
+ssl.engine                  = "enable"
+ssl.pemfile                 = "/etc/lighttpd/ssl/localhost.pem"
+ssl.cipher-list 			= "EECDH+AESGCM:EDH+AESGCM:AES128+EECDH:AES128+EDH"
+}
+```
+
 Edit **/etc/lighttpd/mod_fastcgi.conf**
 ```shell
 vi /etc/lighttpd/mod_fastcgi.conf
